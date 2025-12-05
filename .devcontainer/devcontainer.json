@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "lti-13-example",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+	},
+
+	"forwardPorts": [
+		3000
+	],
+
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                },
+
+                "git.openRepositoryInParentFolders": "always"
+            },
+            "extensions": [
+                "EditorConfig.EditorConfig",
+                "GitHub.copilot-chat@prerelease",
+                "GitHub.copilot@prerelease",
+                "GitHub.vscode-github-actions",
+                "GitHub.vscode-pull-request-github",
+                "ms-vscode.hexeditor",
+                "stkb.rewrap",
+                "tamasfe.even-better-toml",
+            ]
+        }
+    },
+
+    "onCreateCommand": "pnpm config set store-dir /home/node/.pnpm-store && pnpm install --dangerously-allow-all-builds",
+}
